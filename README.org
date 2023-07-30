@@ -297,9 +297,8 @@ sweep along the x-axis, then along the y-axis, at an angle to each.
   }
 #+end_src
 
-** So in total the template file looks like:
 #+name: MUMAX_TEMPLATE
-#+begin_src go :tangle MUMAX_TEMPLATE.mx3 :noweb yes
+#+begin_src go :tangle MUMAX_TEMPLATE.mx3 :noweb yes :exports none
   <<disclaimer>>
 
   <<grid-size>>
