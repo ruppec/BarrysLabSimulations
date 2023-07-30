@@ -1,0 +1,151 @@
+// PLEASE USE THIS TEMPLATE WHEN BEGINNING A NEW FIELD SWEEP SIMULATION, THIS
+// WILL ENSURE THAT OUR DATA PROCESSING PROGRAMS WORK PROPERLY WITH THE OUTPUT
+// YOU GENERATE
+
+// Sizes in meters
+x := 170e-9
+y := 170e-9
+z := 10e-9
+
+xGridsize := 128
+yGridsize := 128
+zGridSize := 2
+
+SetGridsize(xGridsize, yGridsize, zGridsize)
+
+SetCellsize(x/xGridsize, y/yGridsize, z/zGridsize)
+
+randSeed(2)
+
+//Permalloy Properties
+Msat = 800e3
+Aex = 13e-12
+alpha = 0.007
+
+//Corner
+//EdgeSmooth = 8
+
+sq := rect(x, y)
+
+//THE FOLLOWING CORNER CODE MAY NEED REVISING, HAS NOT BEEN TESTED SINCE OTHER SUBSTANTIAL CHANGES 9/8/2022
+//cornerDiameter := 100e-9
+
+//cornerCircle := cylinder(cornerDiameter, cornerDiameter)
+//andSquare := rect(cornerDiameter, cornerDiameter).transl(cornerDiameter/2, cornerDiameter/2, 0)
+
+//quarterCircle := cornerCircle.intersect(andSquare)
+
+//subSquare := rect(cornerDiameter/2, cornerDiameter/2).transl(cornerDiameter/4, cornerDiameter/4, 0)
+
+//corner := subSquare.sub(quarterCircle)
+
+//topRight := corner.transl(xLength/2 - cornerDiameter/2, yLength/2 - cornerDiameter/2, 0)
+//topLeft := topRight.rotz(90*pi/180)
+//bottomLeft := topRight.rotz(180*pi/180)
+//bottomRight := topRight.rotz(270*pi/180)
+
+//roundedRect := rect(xLength, yLength).sub(topRight).sub(topLeft).sub(bottomLeft).sub(bottomRight)
+
+//Rough Edges
+
+cuttersize := 5e-9
+
+//The following line makes sure the "cutter" for the edge roughness is an integer number of cells large
+
+cutterCell:=ceil(cuttersize/min(x/xGridsize, y/yGridsize))*min(x/xGridsize, y/yGridsize)
+
+print(min(x/xGridsize, y/yGridsize))
+print(cutterCell)
+
+cutterRect := rect(cutterCell, cutterCell)
+
+//Top
+for i := 0.0; i <= x/(cutterCell); i++{
+        if rand()<0.5 {
+        sq = sq.sub(cutterRect.transl(i * cutterCell - x/2, y/2 - cutterCell/2, 0))
+}
+}
+
+//Bottom
+for i := 0.0; i <= x/(cutterCell); i++{
+        if rand()<0.5 {
+        sq = sq.sub(cutterRect.transl(i * cutterCell - x/2, -y/2 + cutterCell/2, 0))
+}
+}
+
+//Left
+for i := 0.0; i <= x/(cutterCell); i++{
+        if rand()<0.5 {
+        sq = sq.sub(cutterRect.transl(-x/2 + cutterCell/2, i * cutterCell - y/2,0))
+}
+}
+
+//Right
+for i := 0.0; i <= x/(cutterCell); i++{
+        if rand()<0.5 {
+        sq = sq.sub(cutterRect.transl(x/2 - cutterCell/2, i * cutterCell - y/2,0))
+}
+}
+setgeom(sq)
+saveas(geom, "DotShape")
+
+//Initial Maznetization
+m = vortex(1,1)
+relax()
+
+//Minimization parameters
+MinimizerStop = 1e-6
+
+//Setting the following quantity to zero allows the Dt to change dynamically to minimize error while maximizing the time step
+FixDt =0
+
+//Temperature Settings
+Temp = 293 // in kelvin
+TableAdd(Temp)
+
+//Field Sweep Settings
+Bmax := 70.0e-3
+Bstep := 5.0e-4
+TableAdd(B_ext)
+TableAdd(E_therm)
+TableAdd(E_Zeeman)
+TableAdd(E_demag)
+TableAdd(E_exch)
+TableAdd(E_total)
+TableAdd(MaxAngle)
+
+//Field Sweeps
+
+//This initial run step ensures that the system has enough time to relax into a stable state after getting hit with a large change of field
+B_ext = vector(-Bmax, -Bmax/50, 0)
+run(6e-9) 
+
+for B := -Bmax; B <= Bmax; B += Bstep {
+        B_ext = vector(B, B/50, 0)
+        run(1e-9)
+        tablesave()
+        save(m)
+}
+for B := Bmax; B >= -Bmax; B -= Bstep {
+        B_ext = vector(B, B/50, 0)
+        run(1e-9)
+        tablesave()
+        save(m)
+}
+
+//This run step ensures that the system has enough time to relax into a stable state after getting hit with a large change of field
+B_ext = vector(-Bmax/50, -Bmax, 0)
+        run(6e-9)
+
+for B := -Bmax; B <= Bmax; B += Bstep {
+        B_ext = vector(B/50, B, 0)
+        run(1e-9)
+        tablesave()
+        save(m)
+}
+for B := Bmax; B >= -Bmax; B -= Bstep {
+        B_ext = vector(B/50, B, 0)
+        run(1e-9)
+        tablesave()
+        save(m)
+}
