@@ -1,6 +1,6 @@
 #+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
 #+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
-#+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: email:nil f:t inline:t num:nil p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+title: Basics of mumax3
 #+date: <2023-07-28 Fri>
@@ -12,50 +12,7 @@
 #+creator: Emacs 29.0.91 (Org mode 9.6.5)
 #+cite_export:
 
-#+options: html-link-use-abs-url:nil html-postamble:auto html-preamble:t
-#+options: html-scripts:nil html-style:t html5-fancy:nil tex:t
-#+html_doctype: xhtml-strict
-#+html_container: div
-#+html_content_class: content
-#+description: hey
-#+keywords:
-#+html_link_home:
-#+html_link_up:
-#+html_mathjax:
-#+html_equation_reference_format: \eqref{%s}
-#+html_head:
-#+html_head_extra:
-#+subtitle:
-#+infojs_opt:
-#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.91 (<a href="https://orgmode.org">Org</a> mode 9.6.5)
-#+latex_header:
-
 /Some of this document is borrowed from Nyla's tutorial “how to mumax3”/
-* TODO Find the original source and make this into a clear citation :noexport:
-* TODO Talk to Barry about the corner-cutting code                 :noexport:
- and whether to keep it in the template, this might be something we could
- delegate to seperate git branch.
-* TODO Get code highlighting for html or latex output working?     :noexport:
- would be cool for doing demos or making literature.
-* TODO Review edge roughness procedure                             :noexport:
-consider changing procedure or at the very least refactoring it.
-Specifically, it seems like the procedure ends up taking out only half-cell
-portions. An effort should be made to verify if this is the case.
-This section is also something that might be better suited to a seperate git branch.
-* TODO Why are we setting minimizerStop?                           :noexport:
-It seems like in the template file we do not use the minimize() function and instead use
-relax. Why is it being set currently? Maybe this is something that can be
-mentioned or commented out but it doesn't do anything in the current template.
-
-Additionally, the analogous parameter ~relaxTorqueThreshold~ is not being set.
-
-* TODO Test out relax() and minimize()                             :noexport:
-In the future we should do some quick tests as to which method is faster and if
-the methods agree. This should involve changing the parameters to get a feel for
-their effect.
-
-* TODO Consult code of mumax to determine exactly what relax() and minimize() are doing. :noexport:
-
 * Helpful Links
 Before beginning with mumax3, it is probably most useful to watch through the
 [[https://mumax.ugent.be/mumax3-workshop/][mumax3 workshop]], which gives a very good overview of what mumax can do and how
@@ -566,6 +523,32 @@ function for more options)
     7. Run the MMA file to make insets with magnetization directions
     8. Run Compressor.bat to backup simulations
 
+
+* Tasks
+** TODO Find the original source and make this into a clear citation :noexport:
+** TODO Talk to Barry about the corner-cutting code                :noexport:
+ and whether to keep it in the template, this might be something we could
+ delegate to seperate git branch.
+** TODO Get code highlighting for html or latex output working?    :noexport:
+ would be cool for doing demos or making literature.
+** TODO Review edge roughness procedure                            :noexport:
+consider changing procedure or at the very least refactoring it.
+Specifically, it seems like the procedure ends up taking out only half-cell
+portions. An effort should be made to verify if this is the case.
+This section is also something that might be better suited to a seperate git branch.
+** TODO Why are we setting minimizerStop?                          :noexport:
+It seems like in the template file we do not use the minimize() function and instead use
+relax. Why is it being set currently? Maybe this is something that can be
+mentioned or commented out but it doesn't do anything in the current template.
+
+Additionally, the analogous parameter ~relaxTorqueThreshold~ is not being set.
+
+** TODO Test out relax() and minimize()                            :noexport:
+In the future we should do some quick tests as to which method is faster and if
+the methods agree. This should involve changing the parameters to get a feel for
+their effect.
+
+** TODO Consult code of mumax to determine exactly what relax() and minimize() are doing. :noexport:
 
 * Appendix A
 *Why do we specify grid dimensions that are 7-smooth?*
