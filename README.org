@@ -525,6 +525,11 @@ function for more options)
 
 * Tasks
 ** TODO Find the original source and make this into a clear citation :noexport:
+The blurb at the top of the page references an article where we got information
+from that should be cited.
+Also, there is discussion in this page (namely around the minimize() function)
+that reads as a close paraphrase/copying of a comment made on the google
+group. This language should be removed or a citation should be added.
 ** TODO Talk to Barry about the corner-cutting code                :noexport:
  and whether to keep it in the template, this might be something we could
  delegate to seperate git branch.
