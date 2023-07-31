@@ -523,6 +523,28 @@ function for more options)
     8. Run Compressor.bat to backup simulations
 
 
+* What is this document?
+This is .org file, for use in Emacs [[https://en.wikipedia.org/wiki/Org-mode][org-mode]]. This was chosen as the format
+because the original author of this file uses Emacs and wanted to leverage the
+power and flexibility afforded by org-mode. One of the functions is that the
+~MUMAX_TEMPLATE.mx3~ file is generated from the code snippets in this document
+using org-babel. The keystrokes to do so once you have this document open in
+emacs is C-c C-v t or you could type in M-x org-babel-tangle RET. Where M-x is
+the x key with the "Meta" key held down (usually the Alt key on PC), and RET is
+the enter key. C-c corresponds to Control+C.
+
+Another benefit of using org-mode is that this document can be easily exported
+to several other formats using the keystrokes C-c C-e. Most notably HTML, but
+also Markdown. If you cannot see the option to export to Markdown, you may have
+to start the package by typing M-S-: (require 'ox-md) RET. Now you should be
+able to export to markdown. There exists lots of other exporters available for
+install if you want. For example if you issue M-x package-install RET ox-gfm RET you will
+install the exporter package for Github Flavored Markdown, which you'd need to
+start in the same way you started ox-md before.
+
+Ultimately, if you have trouble with these steps but you want to transition this
+documentation to another format I reccomend using the [[https://pandoc.org/][pandoc]] software which is
+built to convert documents between many different formats.
 * Tasks
 ** TODO Find the original source and make this into a clear citation :noexport:
 The blurb at the top of the page references an article where we got information
