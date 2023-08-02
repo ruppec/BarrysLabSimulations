@@ -321,6 +321,18 @@ sweep along the x-axis, then along the y-axis, at an angle to each.
 
   <<field-sweep-run>>
 #+end_src
+* How to run your own simulation using Git
+The purpose of this git repo is to track our simulations in a coherent, human
+readable way. To that end I've outlined guidelines for creating your own
+simulation files, and saving the results.
+
+ 1. Start a new branch for your simulation and give it a name
+ 2. Make the changes you want and commit those changes to your branch.
+ 3. Run mumax3 and move the output folder to the base folder of the git
+    repository
+ 4. Commit
+    
+
 * Basics of coding in mumax3
 You will need to define your:
  - ~x~, ~y~, and ~z~ lengths
@@ -523,6 +535,12 @@ function for more options)
     8. Run Compressor.bat to backup simulations
 
 
+* Our Tech Stack
+We are running a windows10 machine with an NVIDIA GeForce RTX 3080
+
+We are running a Jenkins server for automating simulations. The admin account
+for the Jenkins server is ~labadmin~, with the normal password, and the email is
+~barrymagnetlab@gmail.com~.
 * What is this document?
 This is .org file, for use in Emacs [[https://en.wikipedia.org/wiki/Org-mode][org-mode]]. This was chosen as the format
 because the original author of this file uses Emacs and wanted to leverage the
@@ -576,6 +594,9 @@ their effect.
 
 ** TODO Consult code of mumax to determine exactly what relax() and minimize() are doing. :noexport:
 
+** TODO Come up with a naming scheme for branches in this repository. :noexport:
+** TODO Automate mumax running and then committing to a branch.    :noexport:
+** TODO Change initial state from vortex to uniform slightly diagonal :noexport:
 * Appendix A
 *Why do we specify grid dimensions that are 7-smooth?*
 
@@ -591,3 +612,4 @@ smaller ones corresponding to the prime factors, and there exist good algorithms
 for computing DFTs of size up to 7.
 
 ** TODO Turn this appendix into a footnote?                        :noexport:
+
