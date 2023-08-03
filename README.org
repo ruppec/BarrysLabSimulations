@@ -451,7 +451,7 @@ data processing code will work properly with your output.
 
     - You can use the wildcard * to convert multiple files at once. For
     example, to convert all the .ovf files in the folder to images, run
-    *mumax3-convert -png *.ovf*. If you only want to convert a subset of
+    ~mumax3-convert -png ***.ovf~ If you only want to convert a subset of
     .ovf files, for example those that being with “m” you can run for
     example *mumax3-convert -png m*.ovf*.
 
@@ -597,6 +597,7 @@ their effect.
 ** TODO Come up with a naming scheme for branches in this repository. :noexport:
 ** TODO Automate mumax running and then committing to a branch.    :noexport:
 ** TODO Change initial state from vortex to uniform slightly diagonal :noexport:
+** TODO Change the way that Jenkins communicates with Github to not use my credentials :noexport:
 * Appendix A
 *Why do we specify grid dimensions that are 7-smooth?*
 
