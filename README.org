@@ -12,7 +12,6 @@
 #+creator: Emacs 29.0.91 (Org mode 9.6.5)
 #+cite_export:
 
-/Some of this document is borrowed from Nyla's tutorial “how to mumax3”/
 * Helpful Links
 Before beginning with mumax3, it is probably most useful to watch through the
 [[https://mumax.ugent.be/mumax3-workshop/][mumax3 workshop]], which gives a very good overview of what mumax can do and how
@@ -565,8 +564,6 @@ documentation to another format I reccomend using the [[https://pandoc.org/][pan
 built to convert documents between many different formats.
 * Tasks
 ** TODO Find the original source and make this into a clear citation :noexport:
-The blurb at the top of the page references an article where we got information
-from that should be cited.
 Also, there is discussion in this page (namely around the minimize() function)
 that reads as a close paraphrase/copying of a comment made on the google
 group. This language should be removed or a citation should be added.
