@@ -241,7 +241,9 @@ simulation.
   Temp = 293 // in kelvin
   TableAdd(Temp)
 #+end_src
-The temperature setting determines the thermal excitations.
+The temperature setting determines the thermal excitations. The ~TableAdd()~
+function adds a value to our output table. So then when we run ~tablesave()~ we
+write those values to our output table as they are at that point in time.
 #+name: field-sweep-settings
 #+begin_src go
   //Field Sweep Settings
@@ -385,7 +387,7 @@ of the function; don't make it too long, otherwise the simulation will
 take forever to run.
         
 *Attention:* Unless you have a lot of experience, please start any field sweep
-simulations by renaming and editing the _MUMAX_TEMPLATE.mx3 file located
+simulations by renaming and editing the ~MUMAX_TEMPLATE.mx3~ file located
 in the C:/Mumax folder on the mumax computer. This will ensure that our
 data processing code will work properly with your output.
 
@@ -623,10 +625,11 @@ their effect.
 ** TODO Come up with a naming scheme for branches in this repository. :noexport:
 ** TODO Automate mumax running and then committing to a branch.    :noexport:
 ** TODO Change initial state from vortex to uniform slightly diagonal :noexport:
-** TODO Change the way that Jenkins communicates with Github to not use my credentials :noexport:
-** TODO Investigate Claim about ~ThermSeed()~.
+** TODO Change the way that Jenkins communicates with Github to not use my credentials :noexport:noexport:
+** TODO Investigate Claim about ~ThermSeed()~.                       :noexport:
 We seem to claim that ~ThermSeed()~ with a large value will make the simulation
 take a long time. That seems very dubious.
+** TODO Investigate claim about dimensions being odd giving CURAND error :noexport:
 * Appendix A
 *Why do we specify grid dimensions that are 7-smooth?*
 
